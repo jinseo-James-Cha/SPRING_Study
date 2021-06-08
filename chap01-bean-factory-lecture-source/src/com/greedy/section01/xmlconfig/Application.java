@@ -14,8 +14,11 @@ public class Application {
 		 * Bean의 생성과 설정, 관리 등의 역할을 맡고있다.
 		 *  */
 		
-		ApplicationContext context = new GenericXmlApplicationContext("");
+		/* 패키지이지만 물리적으로는 폴더이기때문에 위치를 찾을때는 하위폴더를 구분하는 /로 해야한다.
+		 * (혹은 \\로도 가능하지만 .으로는 구분 못한다) */
+		ApplicationContext context = new GenericXmlApplicationContext("com/greedy/section01/xmlconfig/spring-context.xml");
 		
+		System.out.println(context);
 	}
 
 }
