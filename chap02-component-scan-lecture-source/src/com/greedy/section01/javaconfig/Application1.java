@@ -1,5 +1,10 @@
 package com.greedy.section01.javaconfig;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.greedy.section01.javaconfig.config.ContextConfiguration1;
+
 public class Application1 {
 
 	public static void main(String[] args) {
@@ -13,9 +18,24 @@ public class Application1 {
 		 *  @Controller, @Service, @Repository(=DAO), @Configuration(=설정값) 등을 인식한다.
 		 *  */
 		
+		ApplicationContext context = new AnnotationConfigApplicationContext(ContextConfiguration1.class);
+		System.out.println(context);
 		
 		
+		/*
+		 * bean으로 등록된 name들을 전부 확인할 때 사용하는 메소드 
+		 * Processor와 이벤트리스너, 설정클래스가 반으로 등록된 것을 확인할 수 있다.
+		 * */
+		String[] beanNames = context.getBeanDefinitionNames();
+		for(String beanName : beanNames) {
+			System.out.println("bean Name : " + beanName);
+		}
 		
+		MemberDAO memberDAO = context.getBean(MemberDAO.class);
+		
+		System.out.println(memberDAO.selectMember(1));
+		System.out.println(memberDAO.insertMEmber(new MemberDTO(3,"user03", "pass03", "새로운맴버")));
+		System.out.println(memberDAO.selectMember(3));
 	}
 
 }
