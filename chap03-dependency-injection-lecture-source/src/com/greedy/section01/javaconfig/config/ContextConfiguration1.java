@@ -10,6 +10,15 @@ import com.greedy.section01.javaconfig.PersonalAccount;
 @Configuration
 public class ContextConfiguration1 {
 
+	/* DI 종류 4가지
+	 * 
+	 * 1. 생성자를 통한 
+	 * 2. 메소드를 통한 
+	 * 3. setter를 통한 
+	 * 4. 필드를 통한
+	 * 
+	 *  */
+	
 	@Bean
 	public Account accountGenerator() {
 		/* 생성자를 통해 의존성 주입 */
