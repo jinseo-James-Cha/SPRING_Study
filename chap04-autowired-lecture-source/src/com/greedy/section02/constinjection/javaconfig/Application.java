@@ -5,6 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.greedy.section02.constinjection.javaconfig.config.ContextConfiguration;
 
+
 public class Application {
 
 	public static void main(String[] args) {
