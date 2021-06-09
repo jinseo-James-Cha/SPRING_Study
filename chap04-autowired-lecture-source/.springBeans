@@ -8,6 +8,7 @@
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>src/com/greedy/section02/constinjection/xmlconfig/config/spring-context.xml</config>
+		<config>src/com/greedy/section03/setterinjection/xmlconfig/config/spring-context.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
