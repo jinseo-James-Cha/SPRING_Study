@@ -1,4 +1,4 @@
-package com.greedy.section01.singleton.javaconfig;
+package com.greedy.section02.prototype.javaconfig;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

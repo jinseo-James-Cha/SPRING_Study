@@ -1,16 +1,14 @@
-package com.greedy.section01.singleton.javaconfig;
+package com.greedy.section01.singleton.xmlconfig;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import com.greedy.section01.singleton.javaconfig.config.ContextConfiguration;
+import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class Application {
 
 	public static void main(String[] args) {
 
 		ApplicationContext context = 
-				new AnnotationConfigApplicationContext(ContextConfiguration.class);
+				new GenericXmlApplicationContext("com/greedy/section01/singleton/xmlconfig/config/spring-context.xml");
 		
 		/* 등록한 Bean 확인 */
 		String[] beanNames = context.getBeanDefinitionNames();
@@ -30,6 +28,8 @@ public class Application {
 		 * */
 		
 		/* singleton 확인하기  */
+		System.out.println("xml config 확인 ");
+		
 		Product carpBread = context.getBean("carpBrad", Bread.class);
 		Product milk = context.getBean("milk", Beverage.class);
 		Product water = context.getBean("water", Beverage.class);
@@ -42,11 +42,12 @@ public class Application {
 		ShoppingCart cart2 = context.getBean("cart", ShoppingCart.class);
 		cart2.addItem(milk);
 		/* cart1 + 새로 추가된 Product가 들어오게된다. */
-		/* 그 이유인 즉슨, Singleton이라 하나의 Bean을 사용하게 됨으 */
+		/* 그 이유인 즉슨, Singleton이라 하나의 Bean을 사용하게 됨으로. */
 		System.out.println("cart2 담긴 내용 : " + cart2.getItem());
 		
 		System.out.println("cart1의 hashcode " + cart1.hashCode() );
 		System.out.println("cart2의 hashcode " + cart2.hashCode() );
+		
 	}
 
 }
