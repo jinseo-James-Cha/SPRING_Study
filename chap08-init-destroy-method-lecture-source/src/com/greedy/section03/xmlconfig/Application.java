@@ -1,16 +1,15 @@
-package com.greedy.section01.javaconfig;
+package com.greedy.section03.xmlconfig;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import com.greedy.section01.javaconfig.config.ContextConfiguration;
+import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class Application {
 
 	public static void main(String[] args) {
 
 		ApplicationContext context = 
-				new AnnotationConfigApplicationContext(ContextConfiguration.class);
+				new GenericXmlApplicationContext("com/greedy/section03/xmlconfig/config/spring-context.xml");
 
 		Product carpBread = context.getBean("carpBrad", Bread.class);
 		Product milk = context.getBean("milk", Beverage.class);
@@ -29,7 +28,7 @@ public class Application {
 		System.out.println("cart2의 hashcode " + cart2.hashCode() );
 		
 		/* 강제로 컨테이너를 종료시키면 destroyMethod로 설정한 메소드가 동작한다. */
-		((AnnotationConfigApplicationContext)context).close();
+		((GenericXmlApplicationContext)context).close();
 	}
 
 }

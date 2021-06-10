@@ -1,9 +1,10 @@
-package com.greedy.section01.javaconfig;
+package com.greedy.section02.annotation;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.greedy.section01.javaconfig.config.ContextConfiguration;
+import com.greedy.section02.annotation.config.ContextConfiguration;
+
 
 public class Application {
 

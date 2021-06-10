@@ -1,16 +1,20 @@
-package com.greedy.section01.javaconfig.config;
+package com.greedy.section02.annotation.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-import com.greedy.section01.javaconfig.Beverage;
-import com.greedy.section01.javaconfig.Bread;
-import com.greedy.section01.javaconfig.Owner;
-import com.greedy.section01.javaconfig.Product;
-import com.greedy.section01.javaconfig.ShoppingCart;
+import com.greedy.section02.annotation.Beverage;
+import com.greedy.section02.annotation.Bread;
+import com.greedy.section02.annotation.Product;
+import com.greedy.section02.annotation.ShoppingCart;
+
+
 
 @Configuration
+/* 아래 ComponentScan을 통해 Bean으로 등록하지않은 Component를 찾아 실행한다. */
+@ComponentScan("com.greedy.section02.annotation")
 public class ContextConfiguration {
 
 	@Bean
@@ -41,8 +45,5 @@ public class ContextConfiguration {
 	 * 메모리에서 지우기 전에 프로세스는 종료되기 때문에 호출 될 수 없다.
 	 * -> 여기에서는 설정하는 방법만 알아두기.
 	 * */
-	@Bean(initMethod = "openShop", destroyMethod = "closeShop")
-	public Owner owner() {
-		return new Owner();
-	}
+	
 }

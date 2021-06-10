@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="carpBrad" class="com.greedy.section03.xmlconfig.Bread">
+		<constructor-arg name="name" value="진서빵"></constructor-arg>
+		<constructor-arg name="price" value="1000"></constructor-arg>
+		<constructor-arg name="bakedDate" ref="today"></constructor-arg>
+	</bean>
+	
+	<bean id="today" class="java.util.Date"></bean>
+	
+	<bean id="milk" class="com.greedy.section03.xmlconfig.Beverage">
+		<constructor-arg name="name" value="초초코코우유"></constructor-arg>
+		<constructor-arg name="price" value="2000"></constructor-arg>
+		<constructor-arg name="capacity" value="500"></constructor-arg>
+	</bean>
+	
+	<bean id="water" class="com.greedy.section03.xmlconfig.Beverage">
+		<constructor-arg name="name" value="지리산암반수"></constructor-arg>
+		<constructor-arg name="price" value="3000"></constructor-arg>
+		<constructor-arg name="capacity" value="1000"></constructor-arg>
+	</bean>
+	
+	<bean id="cart" class="com.greedy.section03.xmlconfig.ShoppingCart" scope="prototype"/>
+	
+	<bean id="owner" class="com.greedy.section03.xmlconfig.Owner" init-method="openShop" destroy-method="closeShop"></bean>
+</beans>
