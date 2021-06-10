@@ -12,24 +12,11 @@ public class Application {
 		ApplicationContext context = 
 				new AnnotationConfigApplicationContext(ContextConfiguration.class);
 		
-		/* 등록한 Bean 확인 */
 		String[] beanNames = context.getBeanDefinitionNames();
 		for(String beanName : beanNames) {
 			System.out.println("bean Name : " + beanName);
 		}
 		
-		/* 현재 Bean의 구성은 singleton으로 설정되어있다 (기본값) 
-		 * singleton은 IoC 컨테이너 당 하나의 인스턴스만 생성한다.
-		 * 
-		 * spring의 scope
-		 * 1. singleton - IoC 컨테이너 당 Bean 인스턴스를 하나를 생성한다.
-		 * 2. prototype - 요청할 때마다 Bean인스턴스를 새로 만든다.
-		 * 3. request - HTTP 요청당 하나의 Bean 인스턴스를 생성한다. 웹 어플리케이션 컨텍스트에만 해당된다.
-		 * 4. session - HTTP 세션당 Bean 인스턴스 하나를 생성한다. 웹 어플리케이션 컨텍스트에만 해당된다.
-		 * 5. globalSession - 전역 HTTP세션당 Bean 인스턴스를 하나를 생성한다. 포털 어플리케이션 컨텍스트에만 해당된다.
-		 * */
-		
-		/* singleton 확인하기  */
 		Product carpBread = context.getBean("carpBrad", Bread.class);
 		Product milk = context.getBean("milk", Beverage.class);
 		Product water = context.getBean("water", Beverage.class);
@@ -41,8 +28,6 @@ public class Application {
 		
 		ShoppingCart cart2 = context.getBean("cart", ShoppingCart.class);
 		cart2.addItem(milk);
-		/* cart1 + 새로 추가된 Product가 들어오게된다. */
-		/* 그 이유인 즉슨, Singleton이라 하나의 Bean을 사용하게 됨으 */
 		System.out.println("cart2 담긴 내용 : " + cart2.getItem());
 		
 		System.out.println("cart1의 hashcode " + cart1.hashCode() );

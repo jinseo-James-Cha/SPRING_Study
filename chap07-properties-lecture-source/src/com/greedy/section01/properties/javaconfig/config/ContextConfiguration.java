@@ -25,19 +25,38 @@ public class ContextConfiguration {
 	@Value("${bread.carpbrad.name:붕어빵}")
 	private String carpBradName;
 	
+	/* 위에서 선언된 것을 다시 재사용 가능하다. */
+//	@Value("${bread.carpbrad.name:붕어빵}")
+//	private String carpBradName2;
+	
+	@Value("${bread.carpbrad.price:0}")
+	private int carpBradPrice;
+	
+	@Value("${beverage.milk.name:}")
+	private String milkName;
+	
+	@Value("${beverage.milk.price:0}")
+	private int milkPrice;
+
+	@Value("${beverage.milk.capacity:0}")
+	private int milkCapacity;
+	
 	@Bean
 	public Product carpBrad() {
-		return new Bread("붕어빵", 1000, new java.util.Date());
+		return new Bread(carpBradName, carpBradPrice, new java.util.Date());
 	}
 	
 	@Bean
 	public Product milk() {
-		return new Beverage("딸기우유", 1500, 500);
+		return new Beverage(milkName, milkPrice, milkCapacity);
 	}
 	
 	@Bean
-	public Product water() {
-		return new Beverage("지리산암반수", 3000, 1000);
+	public Product water(@Value("${beverage.water.name:}") String waterName,
+						 @Value("${beverage.water.price:0}") int waterPrice,
+						 @Value("${beverage.water.capacity:0}") int waterCapacity) {
+		
+		return new Beverage(waterName, waterPrice, waterCapacity);
 	}
 	
 	@Bean
