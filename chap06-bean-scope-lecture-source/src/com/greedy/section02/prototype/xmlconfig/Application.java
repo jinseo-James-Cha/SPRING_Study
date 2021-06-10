@@ -1,16 +1,14 @@
-package com.greedy.section02.prototype.javaconfig;
+package com.greedy.section02.prototype.xmlconfig;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import com.greedy.section02.prototype.javaconfig.config.ContextConfiguration;
+import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class Application {
 
 	public static void main(String[] args) {
 
 		ApplicationContext context = 
-				new AnnotationConfigApplicationContext(ContextConfiguration.class);
+				new GenericXmlApplicationContext("com/greedy/section02/prototype/xmlconfig/config/spring-context.xml");
 		
 		/* 등록한 Bean 확인 */
 		String[] beanNames = context.getBeanDefinitionNames();
@@ -29,7 +27,9 @@ public class Application {
 		 * 5. globalSession - 전역 HTTP세션당 Bean 인스턴스를 하나를 생성한다. 포털 어플리케이션 컨텍스트에만 해당된다.
 		 * */
 		
-		/* @Scope("prototype") 확인하기  */
+		/* scope="prototype" */
+		System.out.println("xml config 확인 ");
+		
 		Product carpBread = context.getBean("carpBrad", Bread.class);
 		Product milk = context.getBean("milk", Beverage.class);
 		Product water = context.getBean("water", Beverage.class);
@@ -41,10 +41,12 @@ public class Application {
 		
 		ShoppingCart cart2 = context.getBean("cart", ShoppingCart.class);
 		cart2.addItem(milk);
+		
 		System.out.println("cart2 담긴 내용 : " + cart2.getItem());
 		
 		System.out.println("cart1의 hashcode " + cart1.hashCode() );
 		System.out.println("cart2의 hashcode " + cart2.hashCode() );
+		
 	}
 
 }

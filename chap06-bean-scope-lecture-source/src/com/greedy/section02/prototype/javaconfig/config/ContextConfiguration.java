@@ -4,10 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-import com.greedy.section01.singleton.javaconfig.Beverage;
-import com.greedy.section01.singleton.javaconfig.Bread;
-import com.greedy.section01.singleton.javaconfig.Product;
-import com.greedy.section01.singleton.javaconfig.ShoppingCart;
+import com.greedy.section02.prototype.javaconfig.Beverage;
+import com.greedy.section02.prototype.javaconfig.Bread;
+import com.greedy.section02.prototype.javaconfig.Product;
+import com.greedy.section02.prototype.javaconfig.ShoppingCart;
 
 @Configuration
 public class ContextConfiguration {
@@ -28,7 +28,8 @@ public class ContextConfiguration {
 	}
 	
 	@Bean
-	@Scope("singleton") // default
+//	@Scope("singleton") // default
+	@Scope("prototype") // 만들때마다 객체가 생성되게 만들고 싶을 때
 	public ShoppingCart cart() {
 		return new ShoppingCart();
 	}

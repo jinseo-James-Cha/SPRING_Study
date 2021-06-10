@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="carpBrad" class="com.greedy.section02.prototype.xmlconfig.Bread">
+		<constructor-arg name="name" value="붕어빵"></constructor-arg>
+		<constructor-arg name="price" value="1000"></constructor-arg>
+		<constructor-arg name="bakedDate" ref="today"></constructor-arg>
+	</bean>
+	
+	<bean id="today" class="java.util.Date"/>
+	
+	<bean id="milk" class="com.greedy.section02.prototype.xmlconfig.Beverage">
+		<constructor-arg name="name" value="초코우유"></constructor-arg>
+		<constructor-arg name="price" value="2000"></constructor-arg>
+		<constructor-arg name="capacity" value="500"></constructor-arg>
+	</bean>
+	
+	<bean id="water" class="com.greedy.section02.prototype.xmlconfig.Beverage">
+		<constructor-arg name="name" value="백두산암반수"></constructor-arg>
+		<constructor-arg name="price" value="5000"></constructor-arg>
+		<constructor-arg name="capacity" value="500"></constructor-arg>
+	</bean>
+	
+	<!-- scope 속성에 singleton이 기본값으로 들어가있다.  -->
+	<bean id="cart" class="com.greedy.section02.prototype.xmlconfig.ShoppingCart" scope="prototype"/>
+</beans>
