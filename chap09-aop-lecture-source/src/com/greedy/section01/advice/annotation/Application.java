@@ -23,7 +23,7 @@ public class Application {
 		
 		Student greedyStudent = context.getBean("greedyStudent", Student.class);
 		System.out.println("========= Greedy Student=========");
-		AchievementResult greedyResult = greedyStudent.study(new Passion(5));
+		AchievementResult greedyResult = greedyStudent.study(new Passion(10));
 		System.out.println("GreedyStudent Result : " + greedyResult);
 
 	}
