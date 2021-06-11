@@ -21,7 +21,9 @@ public class BeforeAttendingAdvice {
 	 * 
 	 * 매개변수로 전달한 JoinPoint객체는 현재 조인포인트의 메소드명, 인수값 등의 자세한 정보를 엑세스 할 수 있다.
 	 * */
-	@Before("execution(* com.greedy.section01.advice.annotation..*(..))")
+//	@Before("execution(* com.greedy.section01.advice.annotation..*(..))")
+	//StudentPointcut클래스에 public으로 만든 Pointcut annotation을 이용했다.
+	@Before("StudentPointcut.studyPointcut()") 
 	public void beforeAttending(JoinPoint joinPoint) {
 		System.out.println("=====before attending======");
 		System.out.println("오늘도 신나게 등원해서 입실카드를 찍는다.");
