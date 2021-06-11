@@ -1,5 +1,11 @@
 package com.greedy.section02.reflection;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+
 public class Application {
 
 	public static void main(String[] args) {
@@ -30,6 +36,100 @@ public class Application {
 		 * 3. Mybatis Mapper
 		 * 4. log4jdbc
 		 * */
+		
+		/*
+		 * .class 문법을 이용하여 Class 타입의 인스턴스를 생성할 수 있다.
+		 * Class타입의 인스턴스는 해당 클래스의 메타정보를 가지고있는 클래스이다.
+		 * */
+		Class class1 = Account.class;
+		System.out.println("class1 : " + class1);
+		
+		/* Object 클래스의 getClass()메소드를 이용하면 Class타입으로 리턴받아 이용할 수 있다. */
+		Class class2 = new Account().getClass();
+		System.out.println("class2 : " + class2);
+		
+		/* Class.forName() 메소드를 이용하여 런타임시 로딩을 하고 그 클래스를 메타정보를 Class타입을 반환 받을 수 있다. */
+		try {
+			Class class3 = Class.forName("com.greedy.section02.reflection.Account");
+			System.out.println("class3 : " + class3);
+			
+			Class class4 = Class.forName("[D");
+			Class class5 = double[].class;
+			
+			System.out.println("class4 : " + class4);
+			System.out.println("class5 : " + class5);
+			
+			Class class6 = Class.forName("[Ljava.lang.String;");
+			Class class7 = String[].class;
+			
+			System.out.println("class6 : " + class6);
+			System.out.println("class7 : " + class7);
+			
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		// .TYPE 필드를 이용하면 원시형 클래스를 반환받을 수 있다.
+		// .class 필드를 사용하면 클래스 형태로 반환받을수있다.
+		Class class8 = Double.class; //class java.lang.Double
+		// Double.TYPE // double
+		System.out.println("class8 " + class8); // double
+		
+		Class superClass = class1.getSuperclass();
+		System.out.println("superClass : " + superClass);
+		
+		/* 필드 정보  */
+		Field[] fields = Account.class.getDeclaredFields();
+		for(Field field : fields) {
+			System.out.print("modifiers : " + Modifier.toString(field.getModifiers())); // 접근제한자
+			System.out.print(" , type : " + field.getType());
+			System.out.println(", filed name : " + field.getName());
+		}
+		
+		/* 생성자 정보 */
+		Constructor[] constructors = Account.class.getConstructors();
+		for(Constructor constructor : constructors) {
+			System.out.println("constructor : " + constructor);
+			
+			Class[] params = constructor.getParameterTypes();
+			for(Class param : params) {
+				System.out.println("param type : " + param.getTypeName());
+			}
+		}
+		
+		/* 생성자를 이용하여 인스턴스를 생성할 수 있다.*/
+		try {
+			
+			Account acc = (Account) constructors[0].newInstance("20", "110-123-123412", "1234", 10000);
+			
+			System.out.println(acc.getBalance());
+			
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException e) {
+			e.printStackTrace();
+		}
+	
+		
+		/* 찾고자 하는 메소드를 찾아 invoke를 이용하여 해당 객체의 정보를 가져온다.  */
+		Method[] methods = Account.class.getMethods();
+		Method getBalanceMethod = null;
+		
+		for(Method method : methods) {
+			System.out.println(Modifier.toString(method.getModifiers())
+					+ ", " + method.getReturnType().getSimpleName()
+					+ ", " + method.getName());
+			if("getBalance".equals(method.getName())){
+				getBalanceMethod = method;
+			}
+		}
+		
+		try {
+			/* invoke가 중요!!! */
+			System.out.println(getBalanceMethod.invoke(((Account)constructors[2].newInstance()), null));
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| InstantiationException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
