@@ -13,6 +13,7 @@ public class MemberDTO {
 	}
 	
 	public MemberDTO(int sequence, String name, String phone, String email, Account personalAccount) {
+		
 		super();
 		this.sequence = sequence;
 		this.name = name;
