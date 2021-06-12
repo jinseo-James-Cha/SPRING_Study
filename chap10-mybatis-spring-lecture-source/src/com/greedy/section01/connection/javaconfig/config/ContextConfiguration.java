@@ -56,7 +56,6 @@ public class ContextConfiguration {
 	
 	@Bean
 	public SqlSessionFactory sqlSessionFactory(ApplicationContext context) throws Exception{
-		
 		/* mybatis와 spring 연결! 
 		 * 따라서, mybatis-spring 라이브러리 추가!
 		 * */
@@ -64,7 +63,6 @@ public class ContextConfiguration {
 		factoryBean.setDataSource(dataSource());
 		
 		// mybatis 설정값추가
-		
 		return factoryBean.getObject();
 	}
 	
