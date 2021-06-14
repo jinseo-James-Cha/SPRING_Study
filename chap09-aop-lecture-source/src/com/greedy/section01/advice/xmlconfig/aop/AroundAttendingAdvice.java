@@ -31,7 +31,7 @@ public class AroundAttendingAdvice {
 		System.out.println("=====================around attending after ========================");
 		
 		/* 만약에 Greedy학생이면 학원 문이 닫을 때까지 열심히 스터디를 합니다.*/
-		if(joinPoint.getTarget()instanceof GreedyStudent) {
+		if(joinPoint.getTarget() instanceof GreedyStudent) {
 			System.out.println("수업이 끝나도 학원이 닫을 때 까지는 끝난게 아니다. 자율적 스터디 그룹과 함께 다시 공부합시다!!!");
 		}
 		System.out.println("열심히 공부했으니 퇴실카드를 찍는다.");
