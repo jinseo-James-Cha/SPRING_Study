@@ -63,6 +63,9 @@ public class ContextConfiguration {
 		factoryBean.setDataSource(dataSource());
 		
 		// mybatis 설정값추가
+		// java file은 . 으로 연결해주고
+		// 그 외 파일, 폴더는 / 로 연결해준다.
+		factoryBean.setConfigLocation(context.getResource("com/greedy/section01/connection/javaconfig/config/mybatis-config.xml"));
 		return factoryBean.getObject();
 	}
 	
