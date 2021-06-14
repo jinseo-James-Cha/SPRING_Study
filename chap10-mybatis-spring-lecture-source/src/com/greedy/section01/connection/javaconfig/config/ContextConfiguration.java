@@ -69,6 +69,7 @@ public class ContextConfiguration {
 		return factoryBean.getObject();
 	}
 	
+	// 아래 Bean을 위해 위에 2개의 Bean이 필요하다.
 	@Bean
 	public SqlSessionTemplate sqlSessionTemplate(ApplicationContext context) throws Exception{
 		// 추가 라이브러리가 존재
