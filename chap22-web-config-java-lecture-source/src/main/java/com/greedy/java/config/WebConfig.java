@@ -1,6 +1,5 @@
 package com.greedy.java.config;
 
-import javax.servlet.ServletConfig;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
