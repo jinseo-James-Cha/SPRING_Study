@@ -2,14 +2,6 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-<!-- 위에 dtd설정은 mybatis 홈페이지에서 시작하기에서 copy and paste를 했다. -->
-
 <configuration>
-
-<!-- 	<mappers>
-		<mapper resource="com/greedy/section01/connection/xmlconfig/mapper/MenuMapper.xml"/>
-	</mappers> -->
-
-	
 
 </configuration>
