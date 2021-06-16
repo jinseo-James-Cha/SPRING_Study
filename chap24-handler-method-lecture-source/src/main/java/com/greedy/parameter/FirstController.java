@@ -7,9 +7,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -189,4 +192,33 @@ public class FirstController {
 	
 	@GetMapping("body")
 	public void body() {}
+	
+	/* 
+	 * 4. @RequestBody를 이용하는 방법
+	 * 해당 어노테이션은 http본문 자체를 읽는 부분을 모델로 변환시켜주는 어노테이션이다.
+	 * 
+	 * 출력해보면 쿼리스트링 형태의 문자열이 전송된다.
+	 * JSON으로 전달하는 경우 JackSon의 컨버터로 자동 파싱하여 사용할 수 있다.
+	 * 
+	 * @RequestHeader("key")에서 key는 
+	 * 개발자 도구에서 Network에서 Request-header에 해당하는 것을 불러올 수 있다는 의미이다.
+	 * 
+	 * @CookieValue를 이용해서 쿠키정보도 쉽게 불러올 수 있다.
+	 *  */
+	@PostMapping("body")
+	public String bodyTest(@RequestBody String body,
+			@RequestHeader("content-type") String contentType,
+			@CookieValue("JSESSIONID") String sessionId) {
+		
+		System.out.println(body); 
+		// name=%EC%95%84%EC%95%84%EC%95%84&price=20000&categoryCode=1&orderableStatus=Y
+
+		System.out.println(contentType); 
+		// application/x-www-form-urlencoded
+		
+		System.out.println(sessionId);
+		
+		return "first/bodyResult";
+	}
+	
 }

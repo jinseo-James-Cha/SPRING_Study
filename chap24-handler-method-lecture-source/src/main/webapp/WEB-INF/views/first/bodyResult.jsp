@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1 align="center">Model에 담긴 커맨드 객체의 정보 출력</h1>
 	<h3>메뉴의 이름 : ${ menuDTO.name }</h3>
 	<h3>메뉴의 가격 : ${ menuDTO.price }</h3>
 	<h3>메뉴의 카테고리 : ${ menuDTO.categoryCode }</h3>
