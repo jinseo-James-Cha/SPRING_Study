@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/order/*")
 public class ClassMappingTestController {
 
-	/* 와일드 카드를 통해 매핑을 하지만 아래 코드와 같이 /하위주소를 붙여야한다. */
+	/* 와일드 카드를 통해 매핑을 하지만 아래 코드와 같이 /를 붙여도되고 안붙여도 된다. */
 	@GetMapping("/regist")
 	public String registOrder(Model model) {
 		
