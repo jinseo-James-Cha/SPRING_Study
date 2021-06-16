@@ -186,4 +186,7 @@ public class FirstController {
 		
 		return "first/loginResult";
 	}
+	
+	@GetMapping("body")
+	public void body() {}
 }
