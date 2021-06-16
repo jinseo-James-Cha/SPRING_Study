@@ -11,7 +11,12 @@
 	
 	<h3>1. HttpServletRequest로 요청 파라미터 전달 받기</h3>
 	<button onclick="location.href='${ pageContext.servletContext.contextPath }/first/regist'">
-		파라미터 전달하기
+		HttpServletRequest 파라미터 전달하기
+	</button>
+	
+	<h3>2. @RequestParam로 요청 파라미터 전달 받기</h3>
+	<button onclick="location.href='${ pageContext.servletContext.contextPath }/first/modify'">
+		@RequestParam 파라미터 전달하기
 	</button>
 </body>
 </html>
