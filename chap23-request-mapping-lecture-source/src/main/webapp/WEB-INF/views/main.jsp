@@ -42,5 +42,35 @@
 	<form action="${pageContext.servletContext.contextPath}/menu/delete" method="post" >
 		<button type="submit">post 메뉴 등록 요청</button>
 	</form>
+	
+	<h2>2. 클래스에 요청 매핑하기</h2>
+	<!-- 
+		@RequestMapping으느 컨트롤러 클래스 레벨에도 사용이 가능하다.
+	 -->
+	<h3>GET : /order/regist</h3>
+	<button onclick="location.href='${pageContext.servletContext.contextPath}/order/regist'">
+		GET 메뉴 등록 요청
+	</button>
+	
+	<h3>POST : /order/modify</h3>
+	<form action="${pageContext.servletContext.contextPath}/order/modify" method="post" >
+		<button type="submit">post 메뉴 수정 요청</button>
+	</form>
+	
+	<h3>POST : /order/delete</h3>
+	<form action="${pageContext.servletContext.contextPath}/order/delete" method="post" >
+		<button type="submit">post 메뉴 삭제 요청</button>
+	</form>
+	
+	<!-- PathVariable 테스트 -->
+	
+	<!-- PathVariable로 int형을 받기로 하였는데
+		 error1 ) 문자열로 들어가면 400 error발생
+		 error2 ) 안들어가면 404 error발생
+	 -->
+	<h3>GET : /order/detail/{orderNo}</h3>
+	<button onclick="location.href='${pageContext.servletContext.contextPath}/order/detail/'">
+		GET 주문 상세 보기
+	</button>
 </body>
 </html>

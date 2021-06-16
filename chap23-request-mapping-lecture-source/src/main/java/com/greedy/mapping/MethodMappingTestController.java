@@ -39,11 +39,11 @@ public class MethodMappingTestController {
 	 * 요청 메소드 별 전용 어노테이션(since 4.3ver)
 	 * 핸들러 메소드를 조금 더 간결하게 코딩할 수 있게 해준다.
 	 * 
-	 * 요청메소드	어노테이션
-	 * POST		@PostMapping
-	 * GET		@GetMapping
-	 * DELETE   @DeleteMapping  
-	 * PUT		@PutMapping
+	 * 요청메소드	어노테이션          REST API
+	 * POST		@PostMapping     INSERT
+	 * GET		@GetMapping      SELECT
+	 * DELETE   @DeleteMapping   DELETE
+	 * PUT		@PutMapping		 UPDATE
 	 * */
 	
 	@GetMapping("/menu/delete")
