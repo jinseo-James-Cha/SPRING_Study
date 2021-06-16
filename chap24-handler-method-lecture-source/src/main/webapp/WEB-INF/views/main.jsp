@@ -18,5 +18,10 @@
 	<button onclick="location.href='${ pageContext.servletContext.contextPath }/first/modify'">
 		@RequestParam 파라미터 전달하기
 	</button>
+	
+	<h3>3-1, 3-2. HttpSession 이용하기</h3>
+	<button onclick="location.href='${pageContext.servletContext.contextPath }/first/login'">
+		session에 정보담기
+	</button>
 </body>
 </html>

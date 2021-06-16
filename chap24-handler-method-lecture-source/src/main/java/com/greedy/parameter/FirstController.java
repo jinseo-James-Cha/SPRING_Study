@@ -3,6 +3,7 @@ package com.greedy.parameter;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @RequestMapping("/first/*")
+@SessionAttributes("id") // model.addAttribute("id", XX) -> key에 해당하는 것을 어노테이션으로 넣어준다.
 public class FirstController {
 
 	/* GET방식의 /first/regist요청이 들어오면 /first/regist 뷰로 위임한다.*/
@@ -132,5 +136,54 @@ public class FirstController {
 		System.out.println(menu);
 		
 		return "first/searchResult";
+	}
+	
+	@GetMapping("login")
+	public void login() {}
+	
+	/*3-1. HttpSession 이용하기
+	 * HttpSession을 매개변수로 선언하면 핸들러메소드 호출 시 세션 객체를 넣어서 호출한다.
+	 * 
+	 * 매개변수로 선언하면 세션을 만들어서 session이 참조할 수 있게 해준다.
+	 * */
+	@PostMapping("login1")
+	public String sessionTest1(HttpSession session, @RequestParam String id) {
+		session.setAttribute("id", id);
+		
+		return "first/loginResult";
+	}
+	
+	@GetMapping("logout1")
+	public String logoutTest1(HttpSession session) {
+		
+		session.invalidate();
+		
+		return "first/loginResult";
+	}
+	
+	/* 3-2 @SessionAttributes를 이용하여 session에 값 담기
+	 * 클래스 레벨에 @SessionAttributes 어노테이션을 이용하여 세션에 값을 담을 key값을 설정해두면
+	 * Model 영역에 Key로 값이 추가되는 경우 session에 자동등록을 한다.
+	 * 
+	 * */
+	@PostMapping("login2")
+	public String sessionTest2(Model model, @RequestParam String id) {
+		
+		// model에 담는 값을 session에 담긴것으로 사용하기 위해
+		// 클래스레벨에 @SessionAttributes를 선언해 놓았다.
+		model.addAttribute("id", id);
+		
+		return "first/loginResult";
+	}
+	
+	/* SessionAttributes로 등록된 값은 session의 상태를 관리하는 SessionStatus의 setComplete()
+	 * 메소드를 호출해야 사용이 만료된다. */
+	@GetMapping("logout2")
+	public String logoutTest2(SessionStatus sessionStatus) {
+		
+		/* 현재 컨트롤러의 세션에 저장된 모든 정보를 제거한다. 개별제거는 불가능하다. */
+		sessionStatus.setComplete();
+		
+		return "first/loginResult";
 	}
 }
