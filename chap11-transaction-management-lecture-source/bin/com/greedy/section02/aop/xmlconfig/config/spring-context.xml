@@ -51,7 +51,6 @@
 	<!-- 트랜잭션 관련 처리 메소드들을 advice로 등록한다. -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 	    <tx:attributes>
-	        
 			<tx:method name="select*" read-only="true" rollback-for="Exception"/>
 			<tx:method name="regist*" propagation="REQUIRED" isolation="SERIALIZABLE" rollback-for="Exception"/>
 			<tx:method name="modify*" propagation="REQUIRED" isolation="SERIALIZABLE" rollback-for="Exception"/>
