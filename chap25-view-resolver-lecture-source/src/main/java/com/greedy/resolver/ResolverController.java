@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/*")
@@ -24,12 +25,10 @@ public class ResolverController {
 	public String stringRedirect(Model model) throws UnsupportedEncodingException {
 		
 		model.addAttribute("message", URLEncoder.encode("문자열로 뷰 이름 반환하며 리다이렉트", "UTF-8"));
-
 		
 		/* 접두사로 redirect:을 하면
 		 * forward가 아닌 redirect시킨다 */
 		return "redirect:main";  
 	}
-	
 	
 }
