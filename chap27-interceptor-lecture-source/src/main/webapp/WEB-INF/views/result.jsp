@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<h1 align="center"> 메소드 호출 수행 시간 : ${ interval }(ms)</h1>
 </body>
 </html>

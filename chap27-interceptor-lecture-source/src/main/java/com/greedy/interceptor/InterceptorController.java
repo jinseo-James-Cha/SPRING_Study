@@ -14,8 +14,6 @@ public class InterceptorController {
 		
 		Thread.sleep(1000);
 		
-		
-		
 		return "result";
 	}
 }
