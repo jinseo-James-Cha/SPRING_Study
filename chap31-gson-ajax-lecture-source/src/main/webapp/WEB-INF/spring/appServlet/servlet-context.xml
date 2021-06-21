@@ -23,6 +23,15 @@
 	
 	<context:component-scan base-package="com.greedy.gson" />
 	
-	
-	
+	<!-- jsonView라는 이름으로 빈을 등록해줘야한다.
+		 GsonController의 modelAndview.setViewName("jsonView)인것에 대한 설정
+	 -->
+	 <beans:bean id="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView"/>
+
+	<!-- 19번줄에 선언한 일반 ViewResolver보다
+		34번줄에 선언한 BeanNameViewResolver를 먼저 실행시킨다. 
+	  -->
+	 <beans:bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+	 	<beans:property name="order" value="1"/>
+	 </beans:bean>	
 </beans:beans>
