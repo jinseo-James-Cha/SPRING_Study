@@ -75,10 +75,14 @@ public class GsonController {
 	/* 3. jsonView를 이용하여 ModelAndView 반환하는 방법 
 	 * 	  전송하려는 객체를 ModelAndView에 담고 view 이름을 jsonView로 설정하여 반환한다.
 	 *    jsonView 라는 이름의 bean이 존재하는 경우 jsp응답이 아닌 json으로 응답할 수 있는 viewResolver를 이용하는 방식이다.
+	 *    -> servlet-context에 jsp응답 이전에 json으로 응답할 수 있도록 BeanNameViewResolver를 bean에 등록하고 order를 1로 설정해야한다.
 	 * */
 	@GetMapping(value="gson3")
 	public ModelAndView getMemberListInModelAndView(ModelAndView mv, HttpServletResponse response) {
 
+		/* jsonViewResolver에서 response의 정보를 가져가서 view를 이용한다. 
+		 * 따라서, 
+		 * */
 		response.setContentType("application/json; charset=UTF-8");
 		
 		Gson gson = new GsonBuilder() // GsonBuilder를 통해 new Date(System.currentTimeMillis()))를 포맷을 맞춰줘야한다.
